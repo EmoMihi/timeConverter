@@ -4,27 +4,26 @@
 
 using namespace std;
 
-int timeEntered = 0;  // variable for user input
-int hoursOut = 0;  // variable for calculating hours
-int minutesOut = 0; // variable for calculating minutes
-int secondsOut = 0; // variable for calculating or outputing seconds
+int timeEntered = 0;  
+int hoursOut = 0;  
+int minutesOut = 0; 
+int secondsOut = 0; 
 
-char tChoice = ' '; // varialbe allowing the user to enter the neccessery character
+char tChoice = ' '; 
 
-bool validInput;  // boolean function for valid input entered by the user which is set to false, meaning the program will ask for a valid input if input is wrong 
-bool calcRunning; // boolean funtion for calculator running if set to true
+bool validInput;  
+bool calcRunning; 
 
-void QuitCalculator() // void funtion for quiting the calculator if input from the user is 'q' to quit as well as making it clear for the user he's successfully quited the program
-{
+void QuitCalculator() 
 	cout << "Thanks for your time!" << endl;
 	cout << "Cya!" << endl;
-	calcRunning = false; // boolean variable funtion set to false, meaning if Q is entered by user the pregram will terminate and quit
-	system("pause"); // is used to execute pause command and make the terminal wait for a key press
+	calcRunning = false; 
+	system("pause"); 
 }
 
-void WrongInput() // void function for wrong input by the user 
+void WrongInput()  
 {
-	cout << "Wrong Input! - Please Enter [H], [M], [Z], [X], [C] or [Q] to quit" << endl; // outputting the right commands the user should chooce
+	cout << "Wrong Input! - Please Enter [H], [M], [Z], [X], [C] or [Q] to quit" << endl; 
 	system("pause");
 }
 
@@ -79,9 +78,9 @@ void PrintTime3()
 
 void PrintTime4()
 {
-	cout << "Time: "; // output for the terminal
-	cout << timeEntered; // the entered time output by the user
-	cout << "h = "; // output for minutes
+	cout << "Time: "; 
+	cout << timeEntered; 
+	cout << "h = "; 
 
 	cout << secondsOut; 
 	cout << "s " << endl;
@@ -89,7 +88,7 @@ void PrintTime4()
 	system("pause");
 }
 
-void PrintTime5() // void funtion setting up the output on the terminal for the time entered by the user
+void PrintTime5() 
 {
 	cout << "Time: ";
 	cout << timeEntered;
@@ -101,7 +100,7 @@ void PrintTime5() // void funtion setting up the output on the terminal for the 
 	system("pause");
 }
 
-void CalculateStoH() // void funtion calculating seconds to hours allowing to user to enter the time in seconds
+void CalculateStoH() 
 {
 	cout << "Enter time in seconds: ";
 	cin >> timeEntered;
@@ -112,16 +111,16 @@ void CalculateStoH() // void funtion calculating seconds to hours allowing to us
 	minutesOut = secondsOut / 60;
 	secondsOut = timeEntered % 60;
 
-	PrintTime1(); // icluding the void function above here as it makes the code clearer and tidy
+	PrintTime1();
 }
 
-void CalculateStoM() // void funtion calculating seconds to minutes allowing to user to enter the time in seconds
+void CalculateStoM()
 {
 	cout << "Enter time in seconds: ";
 	cin >> timeEntered;
 
 	hoursOut = timeEntered / (60 * 60);
-	secondsOut = timeEntered - (hoursOut * 60 * 60); // calculating the entered seconds to minutes as well as outputing hours and seconds if large number entered by user
+	secondsOut = timeEntered - (hoursOut * 60 * 60); 
 
 	minutesOut = secondsOut / 60;
 	secondsOut = timeEntered % 60;
@@ -129,40 +128,39 @@ void CalculateStoM() // void funtion calculating seconds to minutes allowing to 
 	PrintTime2();
 }
 
-void CalculateMtoH() // void funtion calculating minutes to hours allowing to user to enter the time in minutes
-{
+void CalculateMtoH()
 	cout << "Enter time in minutes: ";
 	cin >> timeEntered;
 
-	minutesOut = timeEntered % 60; // calculating the entered minutes to hours as well as using modulo which gives the remainder of a division the value of 2
+	minutesOut = timeEntered % 60; 
 	hoursOut = timeEntered / 60;
 
 	PrintTime3();
 }
 
-void CalculateHtoS() // void funtion calculating hours to seconds allowing to user to enter the time in hours
+void CalculateHtoS() 
 {
 	cout << "Enter time in hours: ";
 	cin >> timeEntered;
 
-	secondsOut = (timeEntered * 60 * 60); // calculating the entered hours to seconds
+	secondsOut = (timeEntered * 60 * 60); 
 
 	PrintTime4();
 }
 
-void CalculateMtoS() // void funtion calculating minutes to seconds allowing to user to enter the time in minutes
+void CalculateMtoS() 
 {
 	cout << "Enter time in minutes: ";
 	cin >> timeEntered;
 
-	minutesOut = (timeEntered * 60); // calculating the entered minutes to seconds
+	minutesOut = (timeEntered * 60); 
 
 	PrintTime5();
 }
 
 void TimeMenuInput()
 {
-	switch (tChoice)   // using switch to make a list of characters the user uses specifically if not output will be false and they'll have to enter the right word to carry on 
+	switch (tChoice)  
 	{
 	case 'H': // capital character that user can enter
 	case 'h': // small character that the code will accept when entered by the user 
@@ -195,9 +193,9 @@ void TimeMenuInput()
 }
 
 
-void TimerMenu() // void function under the name TimerMenu, making the menu and giving different options for the user to chooce
+void TimerMenu() 
 {
-	system("cls"); // making the screen terminal clear
+	system("cls"); 
 	cout << "********************" << endl;
 	cout << "*  Time Converter  *" << endl;
 	cout << "********************" << endl;
@@ -208,17 +206,17 @@ void TimerMenu() // void function under the name TimerMenu, making the menu and 
 	cout << "[C] - Convert Minutes to Seconds (m)" << endl;
 	cout << "[Q] - Quit " << endl;
 
-	cin >> tChoice; // allowing the user to enter input
+	cin >> tChoice; 
 	TimeMenuInput();
 }
 
 int main()
 {
-	validInput = false; // boolean function set to false
-	calcRunning = true; // boolean function set to true
+	validInput = false; 
+	calcRunning = true; 
 
-	while (calcRunning) {   // while loop for repeating the menu allowing the user to have another go until the user decides when to quit
+	while (calcRunning) {   
 		TimerMenu();
 	}
-	return 0; // the program will execute successfully
+	return 0; 
 }
